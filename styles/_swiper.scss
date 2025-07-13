@@ -2,13 +2,12 @@
   display: none;
   @include xl {
     display: block;
-    background: url("../images/pictures/main-bg.jpg") center / cover no-repeat;
+    // background: url("../images/pictures/main-bg.jpg") center / cover no-repeat;
     height: calc(100vh - 100px);
   }
 
   &__container {
     @include xl {
-      padding: 0 calc(50% - 860px);
       position: relative;
     }
   }
@@ -17,6 +16,7 @@
 .breadcrumbs {
   position: absolute;
   top: 20px;
+  left: calc(50% - 860px);
   z-index: 10;
   color: $white;
   font-size: 14px;
@@ -57,6 +57,7 @@
 .swiper {
   width: 100vw;
   height: calc(100vh - 100px);
+  max-height: 560px;
 }
 
 .swiper-slide {
@@ -64,6 +65,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    z-index: 0;
+  }
 }
 
 .swiper-slide img {
@@ -107,4 +119,11 @@
 .swiper-button-prev,
 .swiper-button-next {
   color: $white;
+}
+.swiper-button-prev {
+  left: calc(50% - 860px);
+}
+
+.swiper-button-next {
+  right: calc(50% - 860px);
 }
