@@ -3,6 +3,7 @@ html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css")
     link(rel="stylesheet", href="./styles/styles.css")
     title COLORS  
 
@@ -42,5 +43,33 @@ html(lang="ru")
 
     main.main
       section.slider
-    
+        .slider__container
+          .breadcrumbs
+            a(href="#").breadcrumbs__link Главная
+            a(href="#").breadcrumbs__link Продукты
+            span.breadcrumbs__current Краски
+          .swiper
+            .swiper-wrapper
+              .swiper-slide
+                //- img(src="./images/pictures/main-bg.jpg" alt="Slide 1")
+                .slide-content
+                  h2.slide-title Краски
+                  p.slide-description Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
+              .swiper-slide
+                //- img(src="./images/pictures/main-bg.jpg" alt="Slide 2")
+                .slide-content
+                  h2.slide-title Летние краски
+                  p.slide-description Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
+              .swiper-slide
+                //- img(src="./images/pictures/main-bg.jpg" alt="Slide 3")
+                .slide-content
+                  h2.slide-title Осенние краски
+                  p.slide-description Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
+            .swiper-pagination
+
+            .swiper-button-prev
+            .swiper-button-next
+
+    script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
+    script(src="./js/swiper.js")
     script(src="./js/app.js") 
