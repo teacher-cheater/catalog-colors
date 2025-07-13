@@ -51,17 +51,14 @@ html(lang="ru")
           .swiper
             .swiper-wrapper
               .swiper-slide(data-bg="url(images/pictures/main-bg.jpg)")
-                //- img(src="./images/pictures/main-bg.jpg" alt="Slide 1")
                 .slide-content
                   h2.slide-title Краски
                   p.slide-description Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
               .swiper-slide(data-bg="url(images/pictures/main-bg.jpg)")
-                //- img(src="./images/pictures/main-bg.jpg" alt="Slide 2")
                 .slide-content
                   h2.slide-title Летние краски
                   p.slide-description Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
               .swiper-slide(data-bg="url(images/pictures/main-bg.jpg)")
-                //- img(src="./images/pictures/main-bg.jpg" alt="Slide 3")
                 .slide-content
                   h2.slide-title Осенние краски
                   p.slide-description Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!
@@ -69,7 +66,41 @@ html(lang="ru")
 
             .swiper-button-prev
             .swiper-button-next
+      .main-content
+        aside.main-content__filter
+          .filter-group
+            input(type='radio' name='filter' id='new-product' checked).main-content__filter-input
+            label(for="new-product").main-content__filter-label Новинки
+          
+          .filter-group
+            input(type='radio' name='filter' id='in-stock')
+            label(for="in-stock").main-content__filter-label Есть в наличии
+          
+          .filter-group
+            input(type='radio' name='filter' id='contract')
+            label(for="contract").main-content__filter-label Контрактные
+          
+          .filter-group
+            input(type='radio' name='filter' id='exclusive')
+            label(for="exclusive").main-content__filter-label Эксклюзивные
+          
+          .filter-group
+            input(type='radio' name='filter' id='sale')
+            label(for="sale").main-content__filter-label Распродажа
+
+
+        section.main-content__orders
+          .main-content__header
+            .main-content__count-items 412 товаров
+            .main-content__sort 
+              select#sort-option(name="sort")
+                option(value="expensive") Сначала дорогие
+                option(value="cheap") Сначала недорогие
+                option(value="popular") Сначала популярные
+                option(value="new") Сначала новые
+          .main-content__items#product-list 
 
     script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
     script(src="./js/swiper.js")
-    script(src="./js/app.js") 
+    script(src="./js/app.js")
+    script(src="./js/api.js") 
