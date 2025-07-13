@@ -237,12 +237,20 @@ body {
   background-color: #7bb899;
 }
 .slider {
-  background: url("../images/pictures/main-bg.jpg") center/cover no-repeat;
-  height: calc(100vh - 100px);
+  display: none;
 }
-.slider__container {
-  padding: 0 calc(50% - 860px);
-  position: relative;
+@media (min-width: 1440px) {
+  .slider {
+    display: block;
+    background: url("../images/pictures/main-bg.jpg") center/cover no-repeat;
+    height: calc(100vh - 100px);
+  }
+}
+@media (min-width: 1440px) {
+  .slider__container {
+    padding: 0 calc(50% - 860px);
+    position: relative;
+  }
 }
 
 .breadcrumbs {

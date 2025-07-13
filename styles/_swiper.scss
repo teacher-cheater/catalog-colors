@@ -1,10 +1,16 @@
 .slider {
-  background: url("../images/pictures/main-bg.jpg") center / cover no-repeat;
-  height: calc(100vh - 100px);
+  display: none;
+  @include xl {
+    display: block;
+    background: url("../images/pictures/main-bg.jpg") center / cover no-repeat;
+    height: calc(100vh - 100px);
+  }
 
   &__container {
-    padding: 0 calc(50% - 860px);
-    position: relative;
+    @include xl {
+      padding: 0 calc(50% - 860px);
+      position: relative;
+    }
   }
 }
 
