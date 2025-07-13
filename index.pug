@@ -1,0 +1,46 @@
+doctype html
+html(lang="ru")  
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="./styles/styles.css")
+    title COLORS  
+
+  body
+    header.header
+      .header__overlay
+      .header__container-left 
+        a.header__logo(href="index.html")
+          img(src="./images/icons/logo.svg" alt="logo")
+
+        nav.header__menu#mainNav
+          .header__burger
+            span
+          ul.header__list
+            li: a(href="#") Продукты
+            li: a(href="#") Цвета
+            li: a(href="#") Вдохновение
+            li: a(href="#") Советы
+            li: a(href="#") Найти магазин
+
+      a.header__mob-logo(href="index.html")
+        img(src="./images/icons/logo.svg" alt="logo")
+
+      .header__container-right 
+        a.header__phone(href="tel:+74952217769") +7 (495) 221-77-69
+          span Заказать звонок  
+
+        .header__profile-info
+          button.header__search-btn
+            img.header__search-icon(src="./images/icons/search.svg")
+          button.header__profile-btn
+            img.header__profile-icon(src="./images/icons/profile.svg")
+          button.header__like-btn
+            img.header__like-icon(src="./images/icons/heart.svg")
+          button.header__cart-btn#cartBtn
+            span.header__cart-count#cartCount 0  
+
+    main.main
+      section.slider
+    
+    script(src="./js/app.js") 

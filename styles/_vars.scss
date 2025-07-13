@@ -1,0 +1,37 @@
+$primary-color: #1f2020;
+$secondary-color: #7bb899;
+
+$opacity-bg: rgba(0, 0, 0, 1);
+
+$white: #ffffff;
+$secondary-bg: #f2f2f2;
+
+$breakpoint-xs: 320px;
+$breakpoint-sm: 544px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}

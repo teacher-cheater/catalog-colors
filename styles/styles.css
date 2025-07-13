@@ -1,0 +1,238 @@
+/* 
+&display=swap
+&subset=cyrillic-ext 
+*/
+@import url("https://fonts.googleapis.com/css?family=Inter:regular,500,600,700,800&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+img {
+  vertical-align: top;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  line-height: 1;
+  font-family: "Inter";
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+  position: relative;
+  justify-content: space-between;
+  padding: 21px 24px;
+}
+@media (min-width: 1440px) {
+  .header {
+    padding: 38px calc(50% - 860px);
+  }
+}
+.header__container-left {
+  display: flex;
+}
+@media (min-width: 1440px) {
+  .header__container-left {
+    flex: 1 1 calc(50% - 10px);
+    justify-content: space-between;
+  }
+}
+.header__burger {
+  display: block;
+  width: 24px;
+  height: 12px;
+  position: relative;
+  z-index: 11;
+}
+.header__burger span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #1f2020;
+  top: 50%;
+  transition: all 0.3s ease;
+}
+.header__burger span::before, .header__burger span::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #1f2020;
+  position: absolute;
+}
+.header__burger span::before {
+  top: 7px;
+}
+.header__burger span::after {
+  bottom: 7px;
+}
+@media (min-width: 1440px) {
+  .header__burger span {
+    display: none;
+  }
+}
+.header__burger._open-burger span {
+  transform: rotate(-45deg) translateY(-50%);
+}
+.header__burger._open-burger span::before {
+  transform: rotate(-90deg) translate(50%);
+  top: 15px;
+}
+.header__burger._open-burger span::after {
+  width: 0;
+}
+.header__logo {
+  display: none;
+}
+@media (min-width: 1440px) {
+  .header__logo {
+    display: block;
+  }
+}
+.header__menu {
+  align-items: center;
+}
+@media (min-width: 1440px) {
+  .header__container-right {
+    flex: 1 1 calc(50% - 10px);
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.header__list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  position: fixed;
+  background-color: #ffffff;
+  width: 100vw;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -150%;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+@media (min-width: 1440px) {
+  .header__list {
+    flex-direction: row;
+    position: static;
+    height: auto;
+    width: 100%;
+    gap: 24px;
+  }
+}
+.header__list a {
+  color: #1f2020;
+  text-transform: uppercase;
+}
+.header__list._open-burger {
+  top: 80px;
+}
+.header__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  padding: 0 15px;
+}
+.header__list._open-burger, .header__overlay._open-burger {
+  top: 0;
+  opacity: 1;
+  visibility: visible;
+}
+.header__mob-logo {
+  display: flex;
+}
+@media (min-width: 1440px) {
+  .header__mob-logo {
+    display: none;
+  }
+}
+.header__phone {
+  display: none;
+}
+@media (min-width: 1440px) {
+  .header__phone {
+    margin-right: 116px;
+    display: flex;
+    flex-direction: column;
+    color: #1f2020;
+    font-weight: 500;
+  }
+  .header__phone span {
+    color: #1f2020;
+    opacity: 30%;
+  }
+}
+.header__profile-info {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.header__search-btn, .header__profile-btn, .header__like-btn {
+  display: none;
+}
+@media (min-width: 1440px) {
+  .header__search-btn, .header__profile-btn, .header__like-btn {
+    display: flex;
+    background: transparent;
+    outline: none;
+  }
+}
+.header__cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #7bb899;
+}/*# sourceMappingURL=styles.css.map */
