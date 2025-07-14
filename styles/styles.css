@@ -367,9 +367,20 @@ body {
 
 #product-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  padding: 44px 0;
+  grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+  gap: 15px;
+}
+@media (min-width: 1024px) {
+  #product-list {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+@media (min-width: 1440px) {
+  #product-list {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    padding: 44px 0;
+  }
 }
 
 .product-card {
@@ -410,17 +421,24 @@ body {
   color: #1f2020;
 }
 .product-card__add-to-cart {
-  display: none;
-  padding: 16px 40px;
-  background: #7bb899 url("../images/icons/plus.svg") center/30% no-repeat;
+  display: flex;
   color: rgba(0, 0, 0, 0.4);
   border: none;
   border-radius: 8px;
+  padding: 20px 12px;
   cursor: pointer;
-  transition: background 0.3s;
+  background: #f2f2f2 url("../images/icons/plus.svg") center/30% no-repeat;
 }
-.product-card__add-to-cart:hover {
-  opacity: 0.8;
+@media (min-width: 1024px) {
+  .product-card__add-to-cart {
+    display: none;
+    padding: 16px 40px;
+    background: #7bb899 url("../images/icons/plus.svg") center/30% no-repeat;
+    transition: background 0.3s;
+  }
+  .product-card__add-to-cart:hover {
+    opacity: 0.8;
+  }
 }
 
 .product-card:hover .product-card__add-to-cart {
@@ -429,15 +447,35 @@ body {
 
 .main-content {
   display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 138px;
-  padding: 72px calc(50% - 860px);
+}
+@media (min-width: 1440px) {
+  .main-content {
+    grid-template-columns: 170px 1fr;
+    gap: 138px;
+    padding: 72px calc(50% - 860px);
+  }
 }
 .main-content__filter {
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 170px;
+}
+.main-content__title {
+  display: flex;
+}
+@media (min-width: 1440px) {
+  .main-content__title {
+    display: none;
+  }
+}
+.main-content__filter-wrapper {
+  display: none;
+}
+@media (min-width: 1440px) {
+  .main-content__filter-wrapper {
+    display: block;
+  }
 }
 .main-content__filter-group {
   display: flex;

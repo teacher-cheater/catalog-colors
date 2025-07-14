@@ -1,8 +1,16 @@
 #product-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  padding: 44px 0;
+  grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+  gap: 15px;
+  @include lg {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  @include xl {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    padding: 44px 0;
+  }
 }
 
 .product-card {
@@ -51,17 +59,24 @@
   }
 
   &__add-to-cart {
-    display: none;
-    padding: 16px 40px;
-    background: $secondary-color url("../images/icons/plus.svg") center / 30%
-      no-repeat;
+    display: flex;
     color: $black;
     border: none;
     border-radius: 8px;
+    padding: 20px 12px;
     cursor: pointer;
-    transition: background 0.3s;
-    &:hover {
-      opacity: 0.8;
+    background: $secondary-bg url("../images/icons/plus.svg") center / 30%
+      no-repeat;
+    @include lg {
+      display: none;
+      padding: 16px 40px;
+      background: $secondary-color url("../images/icons/plus.svg") center / 30%
+        no-repeat;
+
+      transition: background 0.3s;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

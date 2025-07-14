@@ -1,14 +1,31 @@
 .main-content {
   display: grid;
-  grid-template-columns: 170px 1fr;
-  gap: 138px;
-  padding: 72px calc(50% - 860px);
+  @include xl {
+    grid-template-columns: 170px 1fr;
+    gap: 138px;
+    padding: 72px calc(50% - 860px);
+  }
 
   &__filter {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 170px;
+  }
+
+  &__title {
+    display: flex;
+
+    @include xl {
+      display: none;
+    }
+  }
+
+  &__filter-wrapper {
+    display: none;
+    @include xl {
+      display: block;
+    }
   }
 
   &__filter-group {
