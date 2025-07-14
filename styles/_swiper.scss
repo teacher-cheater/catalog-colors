@@ -2,8 +2,7 @@
   display: none;
   @include xl {
     display: block;
-    // background: url("../images/pictures/main-bg.jpg") center / cover no-repeat;
-    height: calc(100vh - 100px);
+    // height: calc(100vh - 100px);
   }
 
   &__container {

@@ -1,10 +1,12 @@
 const productContainer = document.getElementById("product-list");
+const sortOption = document.getElementById("sort-option");
 
 let allProducts = [];
 const API_URL = "https://6873d073c75558e273555679.mockapi.io/colors";
 
 function init() {
   fetchProducts();
+  setupEventListeners();
 }
 
 function fetchProducts() {
@@ -75,6 +77,43 @@ function updateProductsCount(count) {
   if (countElement) {
     countElement.textContent = `${count} товаров`;
   }
+}
+
+function addToCart(product) {
+  console.log("Added to cart:", product);
+}
+
+function sortProducts(sortType) {
+  let sortedProducts = [...allProducts];
+
+  switch (sortType) {
+    case "expensive":
+      sortedProducts.sort((a, b) => b.price - a.price);
+      break;
+    case "cheap":
+      sortedProducts.sort((a, b) => a.price - b.price);
+      break;
+    case "popular":
+      // добавить поле popularity
+      sortedProducts.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
+      break;
+    case "new":
+      // добавить поле createdAt
+      sortedProducts.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      break;
+    default:
+      break;
+  }
+
+  renderProducts(sortedProducts);
+}
+
+function setupEventListeners() {
+  sortOption.addEventListener("change", e => {
+    sortProducts(e.target.value);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);
