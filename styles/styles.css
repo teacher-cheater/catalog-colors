@@ -597,6 +597,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
+  position: relative;
 }
 @media (min-width: 1024px) {
   .main-content__header {
@@ -621,9 +622,6 @@ body {
   bottom: 0;
 }
 
-.dropdown-items {
-  position: relative;
-}
 .dropdown-items__btn {
   position: relative;
   display: block;
@@ -684,8 +682,10 @@ body {
   .dropdown-items__list {
     display: none;
     position: absolute;
-    right: -24px;
-    min-width: 280px;
+    right: 0;
+    width: 280px;
+    min-width: auto;
+    left: auto;
     top: -15px;
     border-radius: 0;
     bottom: auto;
@@ -757,9 +757,6 @@ body {
   .dropdown-items__list--visible {
     bottom: auto;
     display: block;
-  }
-  .overlay {
-    display: none;
   }
 }
 .footer {

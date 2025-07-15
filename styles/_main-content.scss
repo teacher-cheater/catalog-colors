@@ -123,6 +123,7 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 24px;
+    position: relative;
     @include lg {
       margin-bottom: 0;
     }
