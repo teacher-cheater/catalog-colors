@@ -742,4 +742,9 @@ body {
   .overlay {
     display: none !important;
   }
+}
+.footer {
+  background-color: #000000;
+  width: 100%;
+  padding: 160px 0;
 }/*# sourceMappingURL=styles.css.map */
