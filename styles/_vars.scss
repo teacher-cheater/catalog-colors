@@ -7,17 +7,17 @@ $overlay-bg: rgba(0, 0, 0, 0.7);
 $black: #000000;
 $black06: #00000066;
 
-
 $white: #ffffff;
 $secondary-bg: #f2f2f2;
 
-$text-color: #C4C4C4;
+$text-color: #c4c4c4;
 
 $breakpoint-xs: 320px;
 $breakpoint-sm: 544px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1440px;
+$breakpoint-xxl: 1720px;
 
 @mixin sm {
   @media (min-width: $breakpoint-sm) {
@@ -39,6 +39,12 @@ $breakpoint-xl: 1440px;
 
 @mixin xl {
   @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: $breakpoint-xxl) {
     @content;
   }
 }
