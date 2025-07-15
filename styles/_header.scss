@@ -76,11 +76,13 @@
 
     @include xl {
       display: block;
+      margin-right: 12px;
     }
   }
 
   // .header__menu
   &__menu {
+    display: flex;
     align-items: center;
   }
 
@@ -112,7 +114,9 @@
     transition: all 0.3s ease;
     z-index: 10;
     border-radius: 0 0 24px 24px;
-
+    @include lg {
+      white-space: nowrap;
+    }
     @include xl {
       flex-direction: row;
       position: static;

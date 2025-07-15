@@ -37,6 +37,7 @@ function init() {
   fetchProducts();
   initDropdowns();
   initCart();
+  initFilters();
 }
 
 function fetchProducts() {
@@ -140,6 +141,74 @@ function getProperWordForm(count) {
   }
 
   return "товаров";
+}
+
+function initFilters() {
+  const filterInputs = document.querySelectorAll(".main-content__filter-input");
+
+  filterInputs.forEach(input => {
+    input.addEventListener("change", e => {
+      const filterType = e.target.id;
+      filterProducts(filterType);
+    });
+  });
+}
+
+function filterProducts(filterType) {
+  let filteredProducts = [...allProducts];
+  const now = new Date();
+
+  switch (filterType) {
+    case "new-product":
+      // Новинки - товары добавленные за последние 3 месяца
+      const threeMonthsAgo = new Date();
+      threeMonthsAgo.setMonth(now.getMonth() - 3);
+      filteredProducts = filteredProducts.filter(
+        product => product.createdAt > threeMonthsAgo
+      );
+      break;
+
+    case "in-stock":
+      // Все товары "в наличии" (в данных нет информации о наличии)
+      filteredProducts = filteredProducts; // Показываем все
+      break;
+
+    case "contract":
+      // Контрактные - товары с ценой выше среднего
+      const averagePrice =
+        allProducts.reduce((sum, product) => sum + product.price, 0) /
+        allProducts.length;
+      filteredProducts = filteredProducts.filter(
+        product => product.price > averagePrice
+      );
+      break;
+
+    case "exclusive":
+      // Эксклюзивные - товары с популярностью выше 85
+      filteredProducts = filteredProducts.filter(
+        product => product.popularity > 85
+      );
+      break;
+
+    case "sale":
+      // Распродажа - товары добавленные более 6 месяцев назад
+      const sixMonthsAgo = new Date();
+      sixMonthsAgo.setMonth(now.getMonth() - 6);
+      filteredProducts = filteredProducts
+        .filter(product => product.createdAt < sixMonthsAgo)
+        .map(product => ({
+          ...product,
+          originalPrice: product.price,
+          price: Math.round(product.price * 0.7), // 30% скидка
+        }));
+      break;
+
+    default:
+      break;
+  }
+
+  renderProducts(filteredProducts);
+  updateProductsCount(filteredProducts.length);
 }
 
 function initCart() {

@@ -132,9 +132,11 @@ body {
 @media (min-width: 1440px) {
   .header__logo {
     display: block;
+    margin-right: 12px;
   }
 }
 .header__menu {
+  display: flex;
   align-items: center;
 }
 @media (min-width: 1440px) {
@@ -162,6 +164,11 @@ body {
   transition: all 0.3s ease;
   z-index: 10;
   border-radius: 0 0 24px 24px;
+}
+@media (min-width: 1024px) {
+  .header__list {
+    white-space: nowrap;
+  }
 }
 @media (min-width: 1440px) {
   .header__list {
