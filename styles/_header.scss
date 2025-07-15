@@ -128,7 +128,7 @@
   }
 
   &__list._open-burger {
-    top: 80px;
+    top: 68px;
   }
 
   &__overlay {
@@ -137,7 +137,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $opacity-bg;
+    background-color: $overlay-bg;
     z-index: 9;
     opacity: 0;
     visibility: hidden;
@@ -147,9 +147,7 @@
 
   &__list._open-burger,
   &__overlay._open-burger {
-    top: 0;
     opacity: 1;
-    visibility: visible;
   }
 
   // .header__mob-logo
