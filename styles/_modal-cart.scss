@@ -126,12 +126,13 @@
 
 .modal-cart--visible {
   right: 0;
+  display: block;
 }
 
-.modal-cart--visible + .modal-cart__overlay {
-  opacity: 1;
-  pointer-events: all;
-}
+// .modal-cart--visible + .modal-cart__overlay {
+//   opacity: 1;
+//   pointer-events: all;
+// }
 
 .empty-cart {
   text-align: center;
