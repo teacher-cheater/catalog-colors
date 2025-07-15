@@ -248,6 +248,10 @@ body {
   background-color: #7bb899;
   cursor: pointer;
 }
+.header__cart-count {
+  color: #1f2020;
+}
+
 .slider {
   display: none;
 }
@@ -890,12 +894,14 @@ body {
   gap: 12px;
   flex-wrap: wrap;
   border-top: 1px solid #C4C4C4;
+  padding-top: 12px;
 }
 @media (min-width: 1024px) {
   .cart-item {
     display: grid;
     grid-template-columns: 96px 1.4fr 1fr 30px;
     gap: 8px;
+    padding-top: 0;
   }
 }
 .cart-item__image {

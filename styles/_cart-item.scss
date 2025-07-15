@@ -4,10 +4,12 @@
   gap: 12px;
   flex-wrap: wrap;
   border-top: 1px solid $text-color;
+  padding-top: 12px;
   @include lg {
     display: grid;
     grid-template-columns: 96px 1.4fr 1fr 30px;
     gap: 8px;
+    padding-top: 0;
   }
 
   &__image {
