@@ -36,7 +36,7 @@
   &__list {
     position: fixed;
     background: $white;
-    z-index: 6;
+    z-index: 11;
     width: 100%;
     overflow: hidden;
     text-transform: uppercase;
@@ -110,13 +110,6 @@
   bottom: 0;
 }
 
-@include lg {
-  .dropdown-items__list--visible {
-    bottom: auto;
-    display: block;
-  }
-}
-
 .dropdown-items__overlay--visible {
   display: block;
 }
@@ -125,7 +118,7 @@
   outline: none;
 }
 
-.filter-overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -136,22 +129,16 @@
   display: none;
 }
 
-.filter-overlay--visible {
+.overlay--visible {
   display: block;
 }
 
-
-
 @include lg {
-  .filter-overlay {
-    display: none !important;
+  .dropdown-items__list--visible {
+    bottom: auto;
+    display: block;
   }
-
-  .main-content__filter-wrapper {
-    display: block !important;
-    transform: none !important;
-    position: static;
-    width: auto;
-    padding: 0;
+  .overlay {
+    display: none !important;
   }
 }

@@ -145,6 +145,10 @@ function handleSortChange(sortType) {
 }
 
 function initDropdowns() {
+  const overlay = document.createElement("div");
+  overlay.className = "overlay";
+  document.body.appendChild(overlay);
+
   const dropDownWrapper = document.querySelector(".dropdown");
   const dropDownBtn = dropDownWrapper.querySelector(".dropdown-items__btn");
   const dropDownList = dropDownWrapper.querySelector(".dropdown-items__list");
@@ -154,71 +158,60 @@ function initDropdowns() {
 
   const filterBtn = document.querySelector(".main-content__title");
   const filterWrapper = document.querySelector(".main-content__filter-wrapper");
-  const filterOverlay = document.createElement("div");
 
-  filterOverlay.className = "filter-overlay";
-  document.body.appendChild(filterOverlay);
-
-  filterBtn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    filterWrapper.classList.toggle("main-content__filter-wrapper--visible");
-    filterOverlay.classList.toggle("filter-overlay--visible");
-  });
-
-  filterOverlay.addEventListener("click", function () {
+  function closeAll() {
+    dropDownList.classList.remove("dropdown-items__list--visible");
+    dropDownBtn.classList.remove("dropdown-items__btn--active");
     filterWrapper.classList.remove("main-content__filter-wrapper--visible");
-    this.classList.remove("filter-overlay--visible");
-  });
-
-  document.addEventListener("click", function (e) {
-    if (
-      !e.target.closest(".main-content__filter") &&
-      !e.target.closest(".main-content__title")
-    ) {
-      filterWrapper.classList.remove("main-content__filter-wrapper--visible");
-      filterOverlay.classList.remove("filter-overlay--visible");
-    }
-  });
+    overlay.classList.remove("overlay--visible");
+  }
 
   dropDownBtn.addEventListener("click", function (e) {
     e.stopPropagation();
+
+    filterWrapper.classList.remove("main-content__filter-wrapper--visible");
+
     dropDownList.classList.toggle("dropdown-items__list--visible");
     this.classList.toggle("dropdown-items__btn--active");
-    overlay.classList.toggle("dropdown-items__overlay--visible");
+    overlay.classList.toggle("overlay--visible");
   });
 
-  overlay.addEventListener("click", function () {
+  filterBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+
     dropDownList.classList.remove("dropdown-items__list--visible");
     dropDownBtn.classList.remove("dropdown-items__btn--active");
-    this.classList.remove("dropdown-items__overlay--visible");
+
+    filterWrapper.classList.toggle("main-content__filter-wrapper--visible");
+    overlay.classList.toggle("overlay--visible");
   });
 
   dropDownListItems.forEach(listItem => {
     listItem.addEventListener("click", function (e) {
       e.stopPropagation();
       dropDownBtn.innerText = this.innerText;
-      dropDownBtn.classList.remove("dropdown-items__btn--active");
-      dropDownList.classList.remove("dropdown-items__list--visible");
-      overlay.classList.remove("dropdown-items__overlay--visible");
+      closeAll();
 
       const sortValue = this.getAttribute("data-value");
       if (sortValue) handleSortChange(sortValue);
     });
   });
 
-  document.addEventListener("click", e => {
-    if (!e.target.closest(".dropdown")) {
-      dropDownList.classList.remove("dropdown-items__list--visible");
-      dropDownBtn.classList.remove("dropdown-items__btn--active");
-      overlay.classList.remove("dropdown-items__overlay--visible");
+  overlay.addEventListener("click", closeAll);
+
+  document.addEventListener("click", function (e) {
+    if (
+      !e.target.closest(".dropdown") &&
+      !e.target.closest(".main-content__title") &&
+      !e.target.closest(".main-content__filter")
+    ) {
+      closeAll();
     }
   });
 
-  document.addEventListener("keydown", e => {
-    if (e.key === "Tab" || e.key === "Escape") {
-      dropDownList.classList.remove("dropdown-items__list--visible");
-      dropDownBtn.classList.remove("dropdown-items__btn--active");
-      overlay.classList.remove("dropdown-items__overlay--visible");
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeAll();
     }
   });
 }

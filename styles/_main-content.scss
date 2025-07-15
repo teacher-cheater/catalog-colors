@@ -30,13 +30,11 @@
     gap: 10px;
     left: 0;
     right: 0;
-    bottom: 0;
     width: 100%;
     background: $white;
     z-index: 11;
     padding: 20px;
     overflow-y: auto;
-    bottom: -100%;
     border-radius: 24px 24px 0 0;
     padding: 54px 24px 114px;
     transition: all 0.4s ease-in 0s;
@@ -54,6 +52,9 @@
 
     @include lg {
       position: static;
+      border-radius: 0;
+      padding: 0;
+
       &::before {
         content: "";
         width: 0;
