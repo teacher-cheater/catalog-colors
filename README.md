@@ -2,7 +2,7 @@
 
 Необходимо сверстать и запрограммировать страницу каталога
 
-(Макет:) [https://www.figma.com/file/qMhAdsVAsaAkfotB13sO8W]
+Макет: https://www.figma.com/file/qMhAdsVAsaAkfotB13sO8W
 
 Функции:
 1. Слайдер
