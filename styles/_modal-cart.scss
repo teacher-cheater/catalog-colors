@@ -17,7 +17,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-
+    overflow: auto;
     @include md {
       padding: 40px;
     }
