@@ -34,7 +34,6 @@
   }
 
   &__list {
-    display: none;
     position: fixed;
     background: $white;
     z-index: 6;
@@ -44,9 +43,10 @@
     left: 0;
     right: 0;
     min-width: 100%;
-    bottom: 0;
+    bottom: -100%;
     border-radius: 24px 24px 0 0;
     padding: 54px 0 114px;
+    transition: all 0.4s ease-in 0s;
     &::before {
       content: "";
       width: 28px;
@@ -59,6 +59,7 @@
       background-color: $black;
     }
     @include lg {
+      display: none;
       position: absolute;
       right: -24px;
       min-width: 280px;
@@ -106,7 +107,14 @@
 }
 
 .dropdown-items__list--visible {
-  display: block;
+  bottom: 0;
+}
+
+@include lg {
+  .dropdown-items__list--visible {
+    bottom: auto;
+    display: block;
+  }
 }
 
 .dropdown-items__overlay--visible {
@@ -115,4 +123,35 @@
 
 .dropdown-items__btn--active {
   outline: none;
+}
+
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $overlay-bg;
+  z-index: 10;
+  display: none;
+}
+
+.filter-overlay--visible {
+  display: block;
+}
+
+
+
+@include lg {
+  .filter-overlay {
+    display: none !important;
+  }
+
+  .main-content__filter-wrapper {
+    display: block !important;
+    transform: none !important;
+    position: static;
+    width: auto;
+    padding: 0;
+  }
 }

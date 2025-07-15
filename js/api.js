@@ -151,7 +151,34 @@ function initDropdowns() {
   const dropDownListItems = dropDownList.querySelectorAll(
     ".dropdown-items__item"
   );
-  const overlay = document.querySelector(".dropdown-items__overlay");
+
+  const filterBtn = document.querySelector(".main-content__title");
+  const filterWrapper = document.querySelector(".main-content__filter-wrapper");
+  const filterOverlay = document.createElement("div");
+
+  filterOverlay.className = "filter-overlay";
+  document.body.appendChild(filterOverlay);
+
+  filterBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    filterWrapper.classList.toggle("main-content__filter-wrapper--visible");
+    filterOverlay.classList.toggle("filter-overlay--visible");
+  });
+
+  filterOverlay.addEventListener("click", function () {
+    filterWrapper.classList.remove("main-content__filter-wrapper--visible");
+    this.classList.remove("filter-overlay--visible");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (
+      !e.target.closest(".main-content__filter") &&
+      !e.target.closest(".main-content__title")
+    ) {
+      filterWrapper.classList.remove("main-content__filter-wrapper--visible");
+      filterOverlay.classList.remove("filter-overlay--visible");
+    }
+  });
 
   dropDownBtn.addEventListener("click", function (e) {
     e.stopPropagation();

@@ -481,13 +481,43 @@ body {
   }
 }
 .main-content__filter-wrapper {
-  display: none;
+  bottom: -100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  background: #ffffff;
+  z-index: 11;
+  padding: 20px;
+  overflow-y: auto;
+  bottom: -100%;
+  border-radius: 24px 24px 0 0;
+  padding: 54px 24px 114px;
+  transition: all 0.4s ease-in 0s;
+}
+.main-content__filter-wrapper::before {
+  content: "";
+  width: 28px;
+  height: 4px;
+  border-radius: 40px;
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 @media (min-width: 1024px) {
   .main-content__filter-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    position: static;
+  }
+  .main-content__filter-wrapper::before {
+    content: "";
+    width: 0;
+    height: 0;
   }
 }
 .main-content__filter-group {
@@ -568,6 +598,10 @@ body {
   }
 }
 
+.main-content__filter-wrapper--visible {
+  bottom: 0;
+}
+
 .dropdown-items {
   position: relative;
 }
@@ -602,7 +636,6 @@ body {
   z-index: 1;
 }
 .dropdown-items__list {
-  display: none;
   position: fixed;
   background: #ffffff;
   z-index: 6;
@@ -612,9 +645,10 @@ body {
   left: 0;
   right: 0;
   min-width: 100%;
-  bottom: 0;
+  bottom: -100%;
   border-radius: 24px 24px 0 0;
   padding: 54px 0 114px;
+  transition: all 0.4s ease-in 0s;
 }
 .dropdown-items__list::before {
   content: "";
@@ -629,6 +663,7 @@ body {
 }
 @media (min-width: 1024px) {
   .dropdown-items__list {
+    display: none;
     position: absolute;
     right: -24px;
     min-width: 280px;
@@ -673,13 +708,47 @@ body {
 }
 
 .dropdown-items__list--visible {
-  display: block;
+  bottom: 0;
 }
 
+@media (min-width: 1024px) {
+  .dropdown-items__list--visible {
+    bottom: auto;
+    display: block;
+  }
+}
 .dropdown-items__overlay--visible {
   display: block;
 }
 
 .dropdown-items__btn--active {
   outline: none;
+}
+
+.filter-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: none;
+}
+
+.filter-overlay--visible {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .filter-overlay {
+    display: none !important;
+  }
+  .main-content__filter-wrapper {
+    display: block !important;
+    transform: none !important;
+    position: static;
+    width: auto;
+    padding: 0;
+  }
 }/*# sourceMappingURL=styles.css.map */
