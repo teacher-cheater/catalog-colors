@@ -1,16 +1,24 @@
 .cart-item {
-  display: grid;
-  grid-template-columns: 96px 1.4fr 1fr 30px;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  flex-wrap: wrap;
   border-top: 1px solid $text-color;
+  @include lg {
+    display: grid;
+    grid-template-columns: 96px 1.4fr 1fr 30px;
+    gap: 8px;
+  }
+
   &__image {
+    flex: 1 1 20%;
     & img {
       max-width: 96px;
     }
   }
 
   &__info {
+    flex: 1 1 60%;
   }
 
   &__name {
@@ -58,6 +66,7 @@
   }
 
   &__remove {
+    margin-left: auto;
     background: transparent;
     cursor: pointer;
     width: 40px;

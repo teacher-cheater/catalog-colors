@@ -13,10 +13,14 @@
 
   // .modal-cart__container
   &__container {
-    padding: 40px;
+    padding: 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
+
+    @include md {
+      padding: 40px;
+    }
   }
 
   // .modal-cart__header
@@ -97,12 +101,17 @@
 
   // .modal-cart__checkout-btn
   &__checkout-btn {
-    padding: 20px 57px;
+    padding: 10px 17px;
     color: $primary-color;
+    text-transform: uppercase;
     font-size: 12px;
     font-weight: 500;
     border-radius: 4px;
     background-color: $secondary-color;
+
+    @include md {
+      padding: 20px 57px;
+    }
   }
 }
 
@@ -122,4 +131,10 @@
 .modal-cart--visible + .modal-cart__overlay {
   opacity: 1;
   pointer-events: all;
+}
+
+.empty-cart {
+  text-align: center;
+  margin-top: 100px;
+  text-transform: uppercase;
 }

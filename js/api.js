@@ -280,7 +280,6 @@ function initDropdowns() {
   });
 }
 
-// Функция для отрисовки товаров в корзине
 function renderCartItems() {
   const cartItemsContainer = document.getElementById("cartItems");
   const cartTotalElement = document.getElementById("cartTotal");
@@ -366,26 +365,28 @@ function addCartItemEventListeners() {
 
 function increaseQuantity(productId) {
   const item = cart.find(item => item.id === productId);
-  if (item) {
-    item.quantity += 1;
-    saveCartToStorage();
-    updateCartCounter();
-    renderCartItems();
+  if (!item) {
+    return;
   }
+  item.quantity += 1;
+  saveCartToStorage();
+  updateCartCounter();
+  renderCartItems();
 }
 
 function decreaseQuantity(productId) {
   const itemIndex = cart.findIndex(item => item.id === productId);
-  if (itemIndex !== -1) {
-    if (cart[itemIndex].quantity > 1) {
-      cart[itemIndex].quantity -= 1;
-    } else {
-      cart.splice(itemIndex, 1);
-    }
-    saveCartToStorage();
-    updateCartCounter();
-    renderCartItems();
+  if (itemIndex === -1) {
+    return;
   }
+  if (cart[itemIndex].quantity > 1) {
+    cart[itemIndex].quantity--;
+  } else {
+    cart.splice(itemIndex, 1);
+  }
+  saveCartToStorage();
+  updateCartCounter();
+  renderCartItems();
 }
 
 function removeFromCart(productId) {

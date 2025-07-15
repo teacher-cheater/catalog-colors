@@ -1,10 +1,14 @@
 .header {
   display: flex;
   gap: 10px;
-  position: relative;
+  // position: relative;
+  position: fixed;
+  width: 100%;
+  background-color: $white;
   align-items: center;
   justify-content: space-between;
   padding: 21px 24px;
+  z-index: 5;
   @include xl {
     padding: 38px calc(50% - 860px);
   }
@@ -12,10 +16,10 @@
   // .header__container
   &__container-left {
     display: flex;
-
     @include xl {
       flex: 1 1 calc(50% - 10px);
       justify-content: space-between;
+      padding-left: 24px;
     }
   }
 
@@ -58,7 +62,7 @@
       transform: rotate(-45deg) translateY(-50%);
       &::before {
         transform: rotate(-90deg) translate(50%);
-        top: 15px;
+        top: 13px;
       }
       &::after {
         width: 0;
@@ -86,6 +90,7 @@
       flex: 1 1 calc(50% - 10px);
       display: flex;
       justify-content: flex-end;
+      padding-right: 24px;
     }
   }
 
@@ -106,6 +111,7 @@
     height: 80vh;
     transition: all 0.3s ease;
     z-index: 10;
+    border-radius: 0 0 24px 24px;
 
     @include xl {
       flex-direction: row;
