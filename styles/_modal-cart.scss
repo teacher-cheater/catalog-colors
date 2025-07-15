@@ -1,0 +1,124 @@
+.modal-cart {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  //   right: 0;
+  width: 100%;
+  max-width: 500px;
+  height: 100vh;
+  background: $white;
+  z-index: 11;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
+  // .modal-cart__container
+  &__container {
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .modal-cart__header
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 94px;
+  }
+
+  // .modal-cart__title
+  &__title {
+    font-size: 30px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+
+  // .modal-cart__close-btn
+  &__close-btn {
+    background: transparent;
+    transform: rotate(45deg);
+    padding: 6px;
+    border-radius: 50%;
+    border: 1px solid $text-color;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  &__count-order {
+    color: $primary-color;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__clean-list {
+    color: $text-color;
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  // .modal-cart__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  // .modal-cart__items
+  &__items {
+  }
+
+  // .modal-cart__footer
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  // .modal-cart__total
+  &__total {
+    display: flex;
+    flex-direction: column;
+    & span {
+      color: $primary-color;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  // .modal-cart__checkout-btn
+  &__checkout-btn {
+    padding: 20px 57px;
+    color: $primary-color;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    background-color: $secondary-color;
+  }
+}
+
+#cartItems {
+  flex: auto;
+}
+
+#cartTotal {
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.modal-cart--visible {
+  right: 0;
+}
+
+.modal-cart--visible + .modal-cart__overlay {
+  opacity: 1;
+  pointer-events: all;
+}

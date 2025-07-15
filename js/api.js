@@ -1,12 +1,17 @@
 const productContainer = document.getElementById("product-list");
 const sortDropdown = document.querySelector(".dropdown-items__list");
 
+let cart = [];
 let allProducts = [];
 const API_URL = "https://6873d073c75558e273555679.mockapi.io/colors";
 
+window.overlay = document.getElementById("overlay");
+
 function init() {
+  loadCartFromStorage();
   fetchProducts();
   initDropdowns();
+  initCart();
 }
 
 function fetchProducts() {
@@ -112,8 +117,59 @@ function getProperWordForm(count) {
   return "товаров";
 }
 
+function initCart() {
+  const cartBtn = document.getElementById("cartBtn");
+  cartBtn.addEventListener("click", toggleCart);
+
+  const cartCloseBtn = document.querySelector(".modal-cart__close-btn");
+  cartCloseBtn.addEventListener("click", closeCart);
+
+  renderProducts();
+}
+
+function toggleCart() {
+  const cartModal = document.querySelector(".modal-cart");
+  cartModal.classList.toggle("modal-cart--visible");
+  window.overlay.classList.toggle("overlay--visible");
+  document.body.classList.toggle("no-scroll");
+}
+
+function closeCart() {
+  const cartModal = document.querySelector(".modal-cart");
+  cartModal.classList.remove("modal-cart--visible");
+  window.overlay.classList.remove("overlay--visible");
+  document.body.classList.remove("no-scroll");
+}
+
+function loadCartFromStorage() {
+  const savedCart = localStorage.getItem("cart");
+  cart = savedCart ? JSON.parse(savedCart) : [];
+  updateCartCounter();
+}
+
+function saveCartToStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 function addToCart(product) {
+  const existingItem = cart.find(item => item.id === product.id);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  saveCartToStorage();
+  updateCartCounter();
   console.log("Added to cart:", product);
+}
+
+function updateCartCounter() {
+  const counter = document.getElementById("cartCount");
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+  if (counter) {
+    counter.textContent = totalItems;
+  }
 }
 
 function handleSortChange(sortType) {
@@ -127,11 +183,9 @@ function handleSortChange(sortType) {
       sortedProducts.sort((a, b) => a.price - b.price);
       break;
     case "popular":
-      // добавить поле popularity
       sortedProducts.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
       break;
     case "new":
-      // добавить поле createdAt
       sortedProducts.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
@@ -145,10 +199,6 @@ function handleSortChange(sortType) {
 }
 
 function initDropdowns() {
-  const overlay = document.createElement("div");
-  overlay.className = "overlay";
-  document.body.appendChild(overlay);
-
   const dropDownWrapper = document.querySelector(".dropdown");
   const dropDownBtn = dropDownWrapper.querySelector(".dropdown-items__btn");
   const dropDownList = dropDownWrapper.querySelector(".dropdown-items__list");
@@ -163,7 +213,7 @@ function initDropdowns() {
     dropDownList.classList.remove("dropdown-items__list--visible");
     dropDownBtn.classList.remove("dropdown-items__btn--active");
     filterWrapper.classList.remove("main-content__filter-wrapper--visible");
-    overlay.classList.remove("overlay--visible");
+    window.overlay.classList.remove("overlay--visible");
   }
 
   dropDownBtn.addEventListener("click", function (e) {
@@ -173,18 +223,23 @@ function initDropdowns() {
 
     dropDownList.classList.toggle("dropdown-items__list--visible");
     this.classList.toggle("dropdown-items__btn--active");
-    overlay.classList.toggle("overlay--visible");
+    window.overlay.classList.toggle("overlay--visible");
   });
 
-  filterBtn.addEventListener("click", function (e) {
+  filterBtn.addEventListener("click", e => {
     e.stopPropagation();
 
     dropDownList.classList.remove("dropdown-items__list--visible");
     dropDownBtn.classList.remove("dropdown-items__btn--active");
 
     filterWrapper.classList.toggle("main-content__filter-wrapper--visible");
-    overlay.classList.toggle("overlay--visible");
+    window.overlay.classList.toggle("overlay--visible");
   });
+
+  const cartModal = document.querySelector(".modal-cart");
+  cartModal.classList.remove("modal-cart--visible");
+  window.overlay.classList.remove("overlay--visible");
+  document.body.classList.remove("no-scroll");
 
   dropDownListItems.forEach(listItem => {
     listItem.addEventListener("click", function (e) {
@@ -197,7 +252,7 @@ function initDropdowns() {
     });
   });
 
-  overlay.addEventListener("click", closeAll);
+  window.overlay.addEventListener("click", closeAll);
 
   document.addEventListener("click", function (e) {
     if (

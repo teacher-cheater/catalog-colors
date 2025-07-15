@@ -9,7 +9,6 @@ html(lang="ru")
 
   body
     header.header
-      .header__overlay
       .header__container-left 
         a.header__logo(href="index.html")
           img(src="./images/icons/logo.svg" alt="logo")
@@ -99,11 +98,31 @@ html(lang="ru")
                 ul.dropdown-items__list
                   each item in [{class: 'arr-top', value: 'expensive', text: 'Сначала дорогие'},{class: 'arr-down', value: 'cheap', text: 'Сначала недорогие'},{class: 'arr-price-top', value: 'popular', text: 'Сначала популярные'},{class: 'arr-price-down', value: 'new', text: 'Сначала новые'}]
                     li.dropdown-items__item(class=item.class data-value=item.value)= item.text
-            .dropdown-items__overlay
           .main-content__items#product-list 
 
     footer.footer 
-    
+
+    .overlay#overlay
+
+    .modal-cart#cartModal
+      .modal-cart__container
+        .modal-cart__header
+          h2.modal-cart__title Корзина
+          button.modal-cart__close-btn
+            img(src="../images/icons/plus.svg" alt="Закрыть")
+
+        .modal-cart__info
+          h4.modal-cart__count-order товара
+          button.modal-cart__clean-list очистить список
+        .modal-cart__content
+          .modal-cart__items#cartItems
+
+          .modal-cart__footer
+            .modal-cart__total
+              span Итого
+              span#cartTotal 0 ₽
+            button.modal-cart__checkout-btn Оформить заказ
+
     script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
     script(src="./js/swiper.js")
     script(src="./js/burger.js")
