@@ -236,6 +236,7 @@ body {
   font-size: 12px;
   font-weight: 500;
   background-color: #7bb899;
+  cursor: pointer;
 }
 .slider {
   display: none;
@@ -754,7 +755,7 @@ body {
   top: 0;
   right: -100%;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   height: 100vh;
   background: #ffffff;
   z-index: 11;
@@ -785,12 +786,13 @@ body {
   padding: 6px;
   border-radius: 50%;
   border: 1px solid #C4C4C4;
+  cursor: pointer;
 }
 .modal-cart__info {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 }
 .modal-cart__count-order {
   color: #1f2020;
@@ -803,6 +805,7 @@ body {
   text-transform: uppercase;
   font-weight: 300;
   font-size: 14px;
+  cursor: pointer;
 }
 .modal-cart__content {
   display: flex;
@@ -848,4 +851,58 @@ body {
 .modal-cart--visible + .modal-cart__overlay {
   opacity: 1;
   pointer-events: all;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 96px 1.4fr 1fr 30px;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid #C4C4C4;
+}
+.cart-item__image img {
+  max-width: 96px;
+}
+.cart-item__name {
+  line-height: 1.12;
+  color: #1f2020;
+  margin-bottom: 16px;
+}
+.cart-item__price {
+  font-weight: 600;
+}
+.cart-item__controls {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  justify-content: center;
+}
+.cart-item__decrease, .cart-item__increase {
+  border-radius: 4px;
+  display: flex;
+  width: 40px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.cart-item__quantity {
+  min-width: 20px;
+  text-align: center;
+}
+.cart-item__decrease {
+  background: #f2f2f2 url("../images/icons/minus.svg") center/30% no-repeat;
+}
+.cart-item__increase {
+  background: #f2f2f2 url("../images/icons/plus.svg") center/40% no-repeat;
+}
+.cart-item__remove {
+  background: transparent;
+  cursor: pointer;
+  width: 40px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  background: url("../images/icons/remove.svg") center/60% no-repeat;
 }/*# sourceMappingURL=styles.css.map */

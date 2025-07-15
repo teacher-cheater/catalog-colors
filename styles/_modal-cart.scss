@@ -2,9 +2,8 @@
   position: fixed;
   top: 0;
   right: -100%;
-  //   right: 0;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   height: 100vh;
   background: $white;
   z-index: 11;
@@ -42,13 +41,14 @@
     padding: 6px;
     border-radius: 50%;
     border: 1px solid $text-color;
+    cursor: pointer;
   }
 
   &__info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
   }
 
   &__count-order {
@@ -63,6 +63,7 @@
     text-transform: uppercase;
     font-weight: 300;
     font-size: 14px;
+    cursor: pointer;
   }
 
   // .modal-cart__content
