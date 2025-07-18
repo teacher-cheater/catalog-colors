@@ -1,4 +1,6 @@
-const initBurgerMenu = () => {
+import { showOverlay, hideOverlay } from "./overlay.js";
+
+export const initBurgerMenu = () => {
   const burgerBtn = document.querySelector(".header__burger");
   const navMenu = document.querySelector(".header__list");
   const header = document.querySelector(".header");
@@ -15,6 +17,7 @@ const initBurgerMenu = () => {
     burgerOverlay.classList.add("_open-burger");
     document.body.classList.add("no-scroll");
     isMenuOpen = true;
+    showOverlay();
   };
 
   const closeMenu = () => {
@@ -23,6 +26,7 @@ const initBurgerMenu = () => {
     burgerOverlay.classList.remove("_open-burger");
     document.body.classList.remove("no-scroll");
     isMenuOpen = false;
+    hideOverlay();
   };
 
   const toggleMenu = () => {
@@ -52,5 +56,3 @@ const initBurgerMenu = () => {
     }
   });
 };
-
-window.addEventListener("DOMContentLoaded", initBurgerMenu);

@@ -1,0 +1,1 @@
+export const API_URL = "https://6873d073c75558e273555679.mockapi.io/colors";

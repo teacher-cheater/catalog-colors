@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+export const initSwiper = () => {
   if (!window.matchMedia("(min-width: 1200px)").matches) {
     return;
   }
@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!bg) {
       return;
     }
-    activeSlide.style.backgroundImage = bg;
+    activeSlide.style.backgroundImage = `url(${bg})`;
     activeSlide.style.backgroundSize = "cover";
     activeSlide.style.backgroundPosition = "center";
     activeSlide.style.backgroundRepeat = "no-repeat";
   }
-});
+};
